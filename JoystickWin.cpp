@@ -106,12 +106,12 @@ void JoystickWin_::sendReport() {
 }
 
 void JoystickWin_::press(int b) {
-  constrain(b, 0, BUTTONS_MAX - 1);
+  b = constrain(b, 0, BUTTONS_MAX - 1);
   _hid_report.buttons |= (uint32_t)(1UL << b);
 }
 
 void JoystickWin_::release(int b) {
-  constrain(b, 0, BUTTONS_MAX - 1);
+  b = constrain(b, 0, BUTTONS_MAX - 1);
   _hid_report.buttons &= ~(uint32_t)(1UL << b);
 }
 
@@ -120,17 +120,17 @@ void JoystickWin_::releaseAll() {
 }
 
 bool JoystickWin_::isPressed(int b) {
-  constrain(b, 0, BUTTONS_MAX - 1);
+  b = constrain(b, 0, BUTTONS_MAX - 1);
   return ((_hid_report.buttons & (uint32_t)(1UL << b)) != 0) ? true : false;
 }
 
 void JoystickWin_::hat1(int d) {
-  constrain(d, 0, 15);
+  d = constrain(d, 0, 15);
   _hid_report.hat1 = d;
 }
 
 void JoystickWin_::hat2(int d) {
-  constrain(d, 0, 15);
+  d = constrain(d, 0, 15);
   _hid_report.hat2 = d;
 }
 
